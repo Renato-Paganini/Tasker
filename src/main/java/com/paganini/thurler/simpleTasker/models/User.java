@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -49,8 +50,8 @@ public class User {
     @Size(min = 5, max = 20, groups = {CreateUser.class, UpdateUser.class})
     private String password;
     
-   
-    //private List<Task> tasks = new ArrayList<>(100);
+   @OneToMany(mappedBy = "user")
+    private List<Task> tasks = new ArrayList<Task>(100);
 
     //It needs an empty constructor
     public User(){
@@ -132,6 +133,16 @@ public class User {
         } else if (!password.equals(other.password))
             return false;
         return true;
+    }
+
+
+    public List<Task> getTasks() {
+        return tasks;
+    }
+
+
+    public void setTasks(List<Task> tasks) {
+        this.tasks = tasks;
     }
 
     
