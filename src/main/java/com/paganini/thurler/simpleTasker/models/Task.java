@@ -24,7 +24,7 @@ public class Task {
     private Integer id;
 
     @ManyToOne
-    @JoinColumn(name = "iser_id", nullable = false, updatable = false)
+    @JoinColumn(name = "user_id", nullable = false, updatable = false)
     private User user;
 
     @NotNull
