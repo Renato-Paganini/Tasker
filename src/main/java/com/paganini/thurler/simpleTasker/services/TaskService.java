@@ -13,10 +13,8 @@ import com.paganini.thurler.simpleTasker.repositories.TaskRepository;
 @Service
 public class TaskService {
 
-    
     @Autowired
     private TaskRepository taskRepository;
-
 
     @Autowired
     private UserserService userserService;
@@ -35,14 +33,12 @@ public class TaskService {
         return obj;
     }
     
-
     @Transactional
     public Task update (Task obj){
         Task newObj = findById(obj.getId());
         newObj.setDescription(obj.getDescription());
         return this.taskRepository.save(newObj);
     }
-
 
     public void delte(Integer id){
         findById(id);
