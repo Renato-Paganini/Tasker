@@ -1,5 +1,6 @@
 package com.paganini.thurler.simpleTasker.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,12 @@ public class TaskService {
     public Task findById(Integer id){
         Optional<Task> task = this.taskRepository.findById(id);
         return task.orElseThrow(() -> new RuntimeException("Task not found"));
+    }
+
+    
+    public List<Task> findAllByUserId(Integer id){
+        List<Task> tasks = this.taskRepository.findByUser_Id(id);
+        return tasks;
     }
 
     @Transactional
