@@ -52,6 +52,7 @@ public class User {
     private String password;
     
    @OneToMany(mappedBy = "user")
+   @JsonProperty(access = Access.WRITE_ONLY)
     private List<Task> tasks = new ArrayList<Task>(100);
 
     //It needs an empty constructor
